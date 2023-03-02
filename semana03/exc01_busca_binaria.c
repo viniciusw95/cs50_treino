@@ -14,6 +14,7 @@ int main(void)
     {
         busca_binaria(numeros, COMP, numeros[i]);
     }
+    busca_binaria(numeros, COMP, 1000);
 }
 
 // imprime a posição do elemento do vetor (ordenado) passado como argumento.
@@ -43,5 +44,9 @@ void busca_binaria(int vetor[], int tamanho, int elemento_buscado)
             f = meio - 1;
         }
     }
-
+    if (i > f)
+    // se crusou os índices i e f, é porque não achou o elemento. 
+    {
+        printf("Elemento %i não encontrado no vetor.\n", elemento_buscado);
+    }
 }
