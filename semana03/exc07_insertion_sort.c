@@ -1,6 +1,6 @@
-// a ideia do insertion sort (ordenação por inserção) é ordenar deslocando os valores
-// maiores para direita, abrindo espaço para o elemento menor. Irá inserir o elemento menor 
-// logo antes do próximo maior que ele.
+// a ideia do insertion sort (ordenação por inserção) é ordenar deslocando os maiores valores do vetor v[]
+// para direita, abrindo espaço para o elemento menor, chamado 'x'. Assim, irá inserir o elemento x
+// na posição i, tal que v[i-1] <= v[i] <= v[i+1].
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,10 +13,10 @@ void mostrar(int vetor[], int tamanho);
 int main(void)
 {
 
-    int tam = 10;
+    int tam = 4;
     int *lista = lista_aleatoria(tam);
     printf("lista aleatória: ");
-    mostrar(lista, 10);
+    mostrar(lista, tam);
 
     insertion_sort(lista, tam);
     printf("lista ordenada: ");
@@ -27,8 +27,7 @@ int main(void)
 
 int insertion_sort(int vetor[], int tamanho)
 {
-    int atual;
-    int j;
+    int atual, j;
     int i = 1;
     while (i < tamanho)
     {     
@@ -37,9 +36,9 @@ int insertion_sort(int vetor[], int tamanho)
         while (j >= 0 && atual <= vetor[j])
         {         
             vetor[j+1] = vetor[j];
-            vetor[j] = atual;
             j--;     
         }
+        vetor[j+1] = atual;
         i++;    
     }
 }
@@ -62,7 +61,7 @@ int *lista_aleatoria(int tamanho)
     int *lista = (int *)malloc(tamanho * sizeof(int));
     for (int i = 0; i < tamanho; i++)
     {
-        lista[i] = rand() % 100;
+        lista[i] = (rand() % 200) - 100;
     }
     return lista;
 }
