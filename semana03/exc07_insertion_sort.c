@@ -15,6 +15,7 @@ int main(void)
 
     int tam = 4;
     int *lista = lista_aleatoria(tam);
+
     printf("lista aleatória: ");
     mostrar(lista, tam);
 
